@@ -16,14 +16,40 @@ namespace OutlookCalendarRestApi.Controllers
         {
             _logger = logger;
             _graphServiceClient = graphServiceClient;
-
         }
-        
+
         [HttpGet]
         public async Task<IUserEventsCollectionPage> GetEvents()
         {
             IUserEventsCollectionPage events = await _graphServiceClient.Me.Events.Request().GetAsync();
             return events;
+        }
+
+        [HttpPost]
+        public async Task<Event> CreateEvent([FromBody] Event @event)
+        {
+            await _graphServiceClient.Me.Events
+                .Request()
+                .Header("Prefer", "outlook.timezone=\"Pacific Standard Time\"")
+                .AddAsync(@event);
+            return @event;
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<Event> UpdateEvent(string id, [FromBody] Event @event)
+        {
+            await _graphServiceClient.Me.Events[id]
+                .Request()
+                .UpdateAsync(@event);
+
+            return @event;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<string> DeleteEvent(string id)
+        {
+            await _graphServiceClient.Me.Events[id].Request().DeleteAsync();
+            return id;
         }
     }
 }
