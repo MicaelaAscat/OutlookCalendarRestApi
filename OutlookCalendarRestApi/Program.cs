@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
+using CalendarRestApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services
     .AddInMemoryTokenCaches();
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<ICalendarService, OutlookCalendarService>();
 
 builder.Services.AddSwaggerGen(o =>
 {
