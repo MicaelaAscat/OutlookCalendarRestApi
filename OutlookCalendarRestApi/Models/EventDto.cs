@@ -7,8 +7,11 @@ namespace CalendarRestApi.Models
         public string? Id { get; set; }
         [Required]
         public string? Subject { get; set; }
+        [Required]
         public DateTime Start { get; set; }
+        [Required]
         public DateTime End { get; set; }
+        [Required]
         public string? Timezone { get; set; }
 
         [DataType(DataType.MultilineText)]
