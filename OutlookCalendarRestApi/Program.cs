@@ -1,7 +1,7 @@
+using CalendarRestApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using CalendarRestApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +19,12 @@ builder.Services
     {
         options.Scopes = string.Join(' ', initialScopes);
     })
-    .AddInMemoryTokenCaches();
+    .AddDistributedTokenCaches();
+
+builder.Services.AddDistributedSqlServerCache(options =>
+{
+    builder.Configuration.Bind("TokenCacheDatabase", options);
+});
 
 builder.Services.AddControllers();
 

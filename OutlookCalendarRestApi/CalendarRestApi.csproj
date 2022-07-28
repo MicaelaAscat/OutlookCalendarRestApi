@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="7.0.0-preview.6.22330.3" />
     <PackageReference Include="Microsoft.Graph" Version="4.35.0" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.25.1" />
     <PackageReference Include="Microsoft.Identity.Web.MicrosoftGraph" Version="1.25.1" />
