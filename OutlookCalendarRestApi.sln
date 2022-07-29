@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaCalendarRestApi", "CodaCalendarRestApi\CodaCalendarRestApi.csproj", "{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaCalendarRestApi.Tests", "CodaCalendarRestApi.Tests\CodaCalendarRestApi.Tests.csproj", "{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCB1B361-7CA5-4D17-BC85-60EA22A0B9E5}
+	EndGlobalSection
+EndGlobal
