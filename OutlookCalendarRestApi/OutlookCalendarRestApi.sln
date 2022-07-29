@@ -5,7 +5,11 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarRestApi", "CalendarRestApi.csproj", "{3778CA18-CF41-4793-9401-5278720E8BD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarRestApiTests", "..\CalendarRestApiTests\CalendarRestApiTests.csproj", "{77AA58A1-E4EE-4A85-8E85-05C8589ED7EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarRestApiTests", "..\CalendarRestApiTests\CalendarRestApiTests.csproj", "{77AA58A1-E4EE-4A85-8E85-05C8589ED7EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaCalendarRestApi", "..\CodaCalendarRestApi\CodaCalendarRestApi.csproj", "{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaCalendarRestApi.Tests", "..\CodaCalendarRestApi.Tests\CodaCalendarRestApi.Tests.csproj", "{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{77AA58A1-E4EE-4A85-8E85-05C8589ED7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77AA58A1-E4EE-4A85-8E85-05C8589ED7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77AA58A1-E4EE-4A85-8E85-05C8589ED7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B755EB2-2666-4ACD-ADCF-94A2B26BB93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8CBFF6-CC66-43EF-899F-F1EE573312D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
