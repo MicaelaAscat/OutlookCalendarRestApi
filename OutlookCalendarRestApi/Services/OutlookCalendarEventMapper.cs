@@ -3,7 +3,7 @@ using Microsoft.Graph;
 
 namespace CalendarRestApi.Services
 {
-    public static class OutlookCalndarEventMapper
+    public static class OutlookCalendarEventMapper
     {
         public static Event FromDto(EventDto eventDto)
         {

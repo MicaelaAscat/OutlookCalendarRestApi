@@ -17,11 +17,11 @@ namespace CalendarRestApi.Services
         public async Task<EventDto> CreateEvent(EventDto eventDto)
         {
             eventDto.Validate();
-            Event graphEvent = OutlookCalndarEventMapper.FromDto(eventDto);
+            Event graphEvent = OutlookCalendarEventMapper.FromDto(eventDto);
             var newEvent = await _graphServiceClient.Me.Events
                 .Request()
                 .AddAsync(graphEvent);
-            return OutlookCalndarEventMapper.ToDto(newEvent);
+            return OutlookCalendarEventMapper.ToDto(newEvent);
         }
 
         public async Task<string> DeleteEvent(string id)
@@ -39,7 +39,7 @@ namespace CalendarRestApi.Services
                                                                                 .OrderBy("start/dateTime desc")
                                                                                 .Top(EventsPageSize).GetAsync();
 
-            return graphEvents.Select(ge => OutlookCalndarEventMapper.ToDto(ge)).ToList();
+            return graphEvents.Select(ge => OutlookCalendarEventMapper.ToDto(ge)).ToList();
         }
 
         public async Task<EventDto> UpdateEvent(string id, EventDto eventDto)
@@ -50,12 +50,12 @@ namespace CalendarRestApi.Services
                 throw new ValidationException("Id in the url path should be the same as the id in the event body");
             }
 
-            Event graphEvent = OutlookCalndarEventMapper.FromDto(eventDto);
+            Event graphEvent = OutlookCalendarEventMapper.FromDto(eventDto);
             await _graphServiceClient.Me.Events[id]
                                         .Request()
                                         .UpdateAsync(graphEvent);
 
-            return OutlookCalndarEventMapper.ToDto(graphEvent); ;
+            return OutlookCalendarEventMapper.ToDto(graphEvent); ;
         }
     }
 }
