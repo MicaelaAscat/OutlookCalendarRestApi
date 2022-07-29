@@ -28,7 +28,7 @@ namespace OutlookCalendarRestApi.Controllers
                 var eventDtos = await _calendarService.GetEvents();
                 return eventDtos;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(string.Format("ERROR GetEvents: {0}", ex.Message));
                 throw;
@@ -44,7 +44,7 @@ namespace OutlookCalendarRestApi.Controllers
                 var eventDto = await _calendarService.CreateEvent(newEvent);
                 return eventDto;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(string.Format("ERROR CreateEvent: {0}", ex.Message));
                 throw;
@@ -60,7 +60,7 @@ namespace OutlookCalendarRestApi.Controllers
                 var eventDto = await _calendarService.UpdateEvent(id, updatedEvent);
                 return eventDto;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(string.Format("ERROR UpdateEvent: {0}", ex.Message));
                 throw;
@@ -76,7 +76,7 @@ namespace OutlookCalendarRestApi.Controllers
                 var deletedEventId = await _calendarService.DeleteEvent(id);
                 return deletedEventId;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(string.Format("ERROR DeleteEvent: {0}", ex.Message));
                 throw;

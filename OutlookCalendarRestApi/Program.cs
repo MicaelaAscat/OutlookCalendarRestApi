@@ -11,18 +11,15 @@ string[] initialScopes = builder.Configuration.GetValue<string>("DownstreamApi:S
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"))
-    .EnableTokenAcquisitionToCallDownstreamApi(options =>
-    {
+    .EnableTokenAcquisitionToCallDownstreamApi(options => {
         builder.Configuration.Bind("AzureAd", options);
     })
-    .AddMicrosoftGraph(options =>
-    {
+    .AddMicrosoftGraph(options => {
         options.Scopes = string.Join(' ', initialScopes);
     })
     .AddDistributedTokenCaches();
 
-builder.Services.AddDistributedSqlServerCache(options =>
-{
+builder.Services.AddDistributedSqlServerCache(options => {
     builder.Configuration.Bind("TokenCacheDatabase", options);
 });
 
@@ -30,8 +27,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<ICalendarService, OutlookCalendarService>();
 
-builder.Services.AddSwaggerGen(o =>
-{
+builder.Services.AddSwaggerGen(o => {
     // Define that the API requires OAuth 2 tokens
     o.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
@@ -67,11 +63,10 @@ builder.Services.AddSwaggerGen(o =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if(app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
+    app.UseSwaggerUI(c => {
         c.OAuthClientId(builder.Configuration["AzureAd:ClientId"]);
     });
 }

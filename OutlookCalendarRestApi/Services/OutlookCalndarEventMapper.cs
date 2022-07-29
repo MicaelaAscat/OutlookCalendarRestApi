@@ -5,16 +5,16 @@ namespace CalendarRestApi.Services
 {
     public static class OutlookCalndarEventMapper
     {
-        public static Event fromDto(EventDto eventDto)
+        public static Event FromDto(EventDto eventDto)
         {
             var graphEvent = new Event
             {
-                Id = eventDto.Id,   
+                Id = eventDto.Id,
                 Subject = eventDto.Subject,
                 Start = new DateTimeTimeZone
                 {
                     DateTime = eventDto.Start.ToString("o"),
-                    TimeZone = eventDto.Timezone 
+                    TimeZone = eventDto.Timezone
                 },
                 End = new DateTimeTimeZone
                 {
@@ -23,8 +23,7 @@ namespace CalendarRestApi.Services
                 }
             };
 
-            // Add body if present
-            if (!string.IsNullOrEmpty(eventDto.Body))
+            if(!string.IsNullOrEmpty(eventDto.Body))
             {
                 graphEvent.Body = new ItemBody
                 {
@@ -32,17 +31,15 @@ namespace CalendarRestApi.Services
                     Content = eventDto.Body
                 };
             }
-
-            // Add attendees if present
-            if (!string.IsNullOrEmpty(eventDto.Attendees))
+            if(!string.IsNullOrEmpty(eventDto.Attendees))
             {
                 var attendees =
                     eventDto.Attendees.Split(';', StringSplitOptions.RemoveEmptyEntries);
 
-                if (attendees.Length > 0)
+                if(attendees.Length > 0)
                 {
                     var attendeeList = new List<Attendee>();
-                    foreach (var attendee in attendees)
+                    foreach(var attendee in attendees)
                     {
                         attendeeList.Add(new Attendee
                         {
@@ -60,17 +57,19 @@ namespace CalendarRestApi.Services
             return graphEvent;
         }
 
-        public static EventDto toDto(Event graphEvent)
+        public static EventDto ToDto(Event graphEvent)
         {
             return new EventDto()
             {
-                Id = graphEvent.Id, 
+                Id = graphEvent.Id,
                 Subject = graphEvent.Subject,
                 Start = DateTime.Parse(graphEvent.Start.DateTime),
                 End = DateTime.Parse(graphEvent.End.DateTime),
                 Timezone = graphEvent.Start.TimeZone,
-                Body = graphEvent.Body != null? graphEvent.Body.Content : null,
-                Attendees = graphEvent.Attendees != null? String.Join(";", graphEvent.Attendees) : null
+                Body = graphEvent.Body != null ? graphEvent.Body.Content : null,
+                Attendees = graphEvent.Attendees != null ?
+                            string.Join(";", graphEvent.Attendees.Select(a => a.EmailAddress != null ? a.EmailAddress.Address : ""))
+                            : null
             };
         }
     }

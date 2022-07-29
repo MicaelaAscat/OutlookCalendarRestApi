@@ -25,14 +25,14 @@ namespace OutlookCalendarRestApi.Controllers
             {
                 _logger.LogInformation("call getAuthorizationUrl");
                 return string.Format("{0}/{1}/oauth2/v2.0/authorize?client_id={2}&prompt=select_account&scope={3}&response_type=token&redirect_uri={4}",
-                _configuration.GetValue<string>("AzureAd:Instance"),
-                _configuration.GetValue<string>("AzureAd:TenantId"),
-                _configuration.GetValue<string>("AzureAd:ClientId"),
-                UrlEncoder.Default.Encode(_configuration.GetValue<string>("DownstreamApi:Scopes")),
-                UrlEncoder.Default.Encode(_configuration.GetValue<string>("DownstreamApi:RedirectUri"))
-                );
+                                        _configuration.GetValue<string>("AzureAd:Instance"),
+                                        _configuration.GetValue<string>("AzureAd:TenantId"),
+                                        _configuration.GetValue<string>("AzureAd:ClientId"),
+                                        UrlEncoder.Default.Encode(_configuration.GetValue<string>("DownstreamApi:Scopes")),
+                                        UrlEncoder.Default.Encode(_configuration.GetValue<string>("DownstreamApi:RedirectUri"))
+                                     );
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 _logger.LogError(string.Format("ERROR getAuthorizationUrl: {0}", ex.Message));
                 throw;
