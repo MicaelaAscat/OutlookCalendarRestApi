@@ -19,5 +19,21 @@ namespace CalendarRestApi.Models
         [RegularExpression(@"((\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)*([;])*)*",
           ErrorMessage = "Please enter one or more email addresses separated by a semi-colon (;)")]
         public string? Attendees { get; set; }
+
+        public void Validate()
+        {
+            if(Start > End)
+            {
+                throw new ValidationException("Event start date should be before than event end date");
+            }
+            try
+            {
+                var timeZone = TimeZoneInfo.FindSystemTimeZoneById(Timezone);
+            }
+            catch(Exception ex)
+            {
+                throw new ValidationException(string.Format("Invalid timezone: {0}", ex.Message));
+            }
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using CalendarRestApi.Models;
 using Microsoft.Graph;
+using System.ComponentModel.DataAnnotations;
 
 namespace CalendarRestApi.Services
 {
-    public class OutlookCalendarService : ICalendarService
+    public class OutlookCalendarService :ICalendarService
     {
         private const int EventsPageSize = 50;
 
@@ -15,6 +16,7 @@ namespace CalendarRestApi.Services
         }
         public async Task<EventDto> CreateEvent(EventDto eventDto)
         {
+            eventDto.Validate();
             Event graphEvent = OutlookCalndarEventMapper.FromDto(eventDto);
             var newEvent = await _graphServiceClient.Me.Events
                 .Request()
@@ -42,9 +44,10 @@ namespace CalendarRestApi.Services
 
         public async Task<EventDto> UpdateEvent(string id, EventDto eventDto)
         {
+            eventDto.Validate();
             if(!string.IsNullOrEmpty(eventDto.Id) && !string.Equals(id, eventDto.Id))
             {
-                throw new ServiceException(new Error() { Message = "Can't change event id!" });
+                throw new ValidationException("Id in the url path should be the same as the id in the event body");
             }
 
             Event graphEvent = OutlookCalndarEventMapper.FromDto(eventDto);
