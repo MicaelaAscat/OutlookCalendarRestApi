@@ -15,13 +15,10 @@ namespace CodaCalendarRestApi.Controllers
     [ApiController]
     [AuthorizeForScopes(Scopes = new[] { "access_as_user" })]
     [Route("[controller]")]
-    public class CalendarController : ControllerBase
+    public class CalendarController :ControllerBase
     {
         private readonly ICalendarService _calendarService;
         private readonly ILogger<CalendarController> _logger;
-
-        // The Web API will only accept tokens 1) for users, and 2) having the "access_as_user" scope for this API
-        static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
 
         public CalendarController(ILogger<CalendarController> logger, ICalendarService calendarService)
         {
@@ -38,7 +35,7 @@ namespace CodaCalendarRestApi.Controllers
                 var eventDtos = await _calendarService.GetEvents();
                 return Ok(eventDtos);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 var errorMessage = string.Format("ERROR GetEvents: {0}", ex.Message);
                 _logger.LogError(errorMessage);
@@ -55,13 +52,13 @@ namespace CodaCalendarRestApi.Controllers
                 var eventDto = await _calendarService.CreateEvent(newEvent);
                 return Ok(eventDto);
             }
-            catch (ValidationException ex)
+            catch(ValidationException ex)
             {
                 var errorMessage = string.Format("ERROR CreateEvent: {0}", ex.Message);
                 _logger.LogError(errorMessage);
                 return BadRequest(errorMessage);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 var errorMessage = string.Format("ERROR CreateEvent: {0}", ex.Message);
                 _logger.LogError(errorMessage);
@@ -78,13 +75,13 @@ namespace CodaCalendarRestApi.Controllers
                 var eventDto = await _calendarService.UpdateEvent(id, updatedEvent);
                 return Ok(eventDto);
             }
-            catch (ValidationException ex)
+            catch(ValidationException ex)
             {
                 var errorMessage = string.Format("ERROR UpdateEvent: {0}", ex.Message);
                 _logger.LogError(errorMessage);
                 return BadRequest(errorMessage);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 var errorMessage = string.Format("ERROR UpdateEvent: {0}", ex.Message);
                 _logger.LogError(errorMessage);
@@ -101,7 +98,7 @@ namespace CodaCalendarRestApi.Controllers
                 var deletedEventId = await _calendarService.DeleteEvent(id);
                 return Ok(deletedEventId);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 var errorMessage = string.Format("ERROR DeleteEvent: {0}", ex.Message);
                 _logger.LogError(errorMessage);
