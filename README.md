@@ -4,6 +4,9 @@ Api  REST que permite listar, crear, editar y eliminar eventos de un calendario 
 ## Url OutlookCalendarRestApi Swagger
 https://codacalendarapi.azurewebsites.net/swagger/index.html
 
+## Github Repo
+https://github.com/MicaelaAscat/OutlookCalendarRestApi.git
+
 ## Autenticación 
 La autenticación se realizó utilizando Microsoft Identity. Para poder ejecutar un endpoint se necesita un acces token, siguiendo el protocolo Oauth2. La forma más simple de probarlo es ingresar a swagger, presionar el botón "Authorize", seleccionar el scope requerido y luego loguearse con la cuenta de Microsoft cuyo calendario se quiera obtener. 
 Una vez autenticado, retorna a swagger con un popup que indica que esta logueado, cerralo y ya se puede acceder a la API.
@@ -65,7 +68,7 @@ En este proyecto sólo se interactua con un calendario de Outlook, pero si en un
 Esta clase es la implementaciñon especifica de Outlook, usa un mapper (OutlookCalendarEventMapper) para poder convertir eventos de Outlook a los dtos que se manejan internamente en la api y viceversa. El mapper es una clase totalmente ligada al proveedor del calendario. 
 
 ## Frameworks
-El proyecto lo hice en un principio usando .Net 6, pero como era un requisito estricto usar .Net 5 realicé la migración. Igualmente la implementación para .Net 6 se encuentra en el siguiente branch: 
+El proyecto lo hice en un principio usando .Net 6, pero como era un requisito estricto usar .Net 5 realicé la migración. Igualmente la implementación para .Net 6 se encuentra en el siguiente branch: net-6-version
 
 ## Documentacion
 https://docs.microsoft.com/es-es/graph/api/resources/event?view=graph-rest-1.0
