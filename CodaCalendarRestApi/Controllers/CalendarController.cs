@@ -14,7 +14,7 @@ namespace CodaCalendarRestApi.Controllers
     [Authorize]
     [ApiController]
     [AuthorizeForScopes(Scopes = new[] { "access_as_user" })]
-    [Route("[controller]")]
+    [Route("Events")]
     public class CalendarController :ControllerBase
     {
         private readonly ICalendarService _calendarService;
