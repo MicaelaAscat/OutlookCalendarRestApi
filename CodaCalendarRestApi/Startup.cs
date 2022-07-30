@@ -57,7 +57,6 @@ namespace CodaCalendarRestApi
                         Implicit = new OpenApiOAuthFlow
                         {
                             AuthorizationUrl = new Uri(string.Format("https://login.microsoftonline.com/{0}/oauth2/v2.0/authorize", Configuration["AzureAd:TenantId"])),
-                            TokenUrl = new Uri(string.Format("https://login.microsoftonline.com/{0}/oauth2/v2.0/token", Configuration["AzureAd:TenantId"])),
                             Scopes = Configuration["AzureAd:Scopes"]
                                            .Split(' ')
                                            .ToDictionary(s => s.Trim(), s => ""),
